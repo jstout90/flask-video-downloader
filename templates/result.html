@@ -1,0 +1,42 @@
+{%extends 'base.html'%} {% block content %}
+<h3 class="display-4">Select Video or Audio File to Download</h3>
+<div class="containter">
+  <div class="row">
+    <div class="col-6">
+      <form action="/download_video" method="POST">
+        <input type="hidden" name="query" value="{{result}}" />
+        <h3>Video Options</h3>
+        <ul class="list-group list-group-flush">
+          {% for video in videoFilter %}
+          <li class="list-group-item bg-light border border-primary">
+            Quality: {{video.resolution}}
+            <input type="hidden" name="video-tag" value="{{video.itag}}" />
+            <a href="/download_video" target="blank"
+              ><button class="btn btn-primary">Download</button></a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </form>
+    </div>
+    <div class="col-6">
+      <form action="/download_audio" method="POST">
+        <input type="hidden" name="query" value="{{result}}" />
+        <h3>Audio Options</h3>
+        <ul class="list-group list-group-flush">
+          {% for audio in audioFilter %}
+          <li class="list-group-item bg-light border border-primary">
+            Quality: {{audio.abr}}
+            <input type="hidden" name="audio-tag" value="{{audio.itag}}" />
+            <a href="/download_audio" target="blank"
+              ><button class="btn btn-primary">Download</button></a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </form>
+    </div>
+    <a href="/" class="mx-auto"><h3>Back to Main Page</h3></a>
+  </div>
+</div>
+{% endblock %}

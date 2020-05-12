@@ -1,0 +1,18 @@
+{%extends 'base.html'%} {% block content %}
+<h2 class="display-4">Video Downloader</h2>
+<form action="/result" method="post">
+  <div class="form-row">
+    <div class="col-8 center">
+      <input
+        class="form-control"
+        type="text"
+        name="url"
+        placeholder="paste url here..."
+        required
+      />
+    </div>
+    <input class="btn btn-primary" type="submit" value="Download" />
+  </div>
+</form>
+
+{% endblock %}
